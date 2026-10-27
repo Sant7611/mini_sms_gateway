@@ -53,13 +53,15 @@ def calculate_parts(message):
     return math.ceil(length / multi_limit)
 
 
-def calculate_sms_cost(*, message, recipients_count):
+def calculate_sms_cost(*, message, recipients):
 
     if not message or not message.strip():
         raise ValueError("SMSMessage cannot be empty")
 
-    if type(recipients_count) is not int or recipients_count <= 0:
-        raise ValueError("Recipients must be a positive integer")
+    recipients_count = len(recipients)
+    
+    if recipients_count <= 0:
+        raise ValueError("Recipients must not be empty")
 
     parts = calculate_parts(message)
 
