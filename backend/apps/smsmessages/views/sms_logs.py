@@ -18,4 +18,4 @@ class SMSLogsView(ListAPIView):
     def get_queryset(self):
         return SMSMessage.objects.filter(
             sender=self.request.user
-        ).order_by("-created_at")
+        ).order_by("-created_at", '-id')

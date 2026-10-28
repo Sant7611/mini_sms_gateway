@@ -35,6 +35,7 @@ class SMSReadSerializer(serializers.ModelSerializer):
     class Meta:
         model = SMSMessage
         fields = (
+            "id",
             "recipient",
             "content",
             "status",

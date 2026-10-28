@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from apps.smsmessages.models import SMSMessage
 from apps.smsmessages.services import send_sms
 from rest_framework.response import Response
-from django.core.exceptions import ValidationError
+from rest_framework.exceptions import ValidationError
 from rest_framework import status
 
 
