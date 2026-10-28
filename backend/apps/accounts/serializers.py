@@ -60,14 +60,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
         return user
 
-
-class UserMiniSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ["id", "usernmae", "phone_number"]
-        read_only_fields = fields
-
-
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True, trim_whitespace=False)

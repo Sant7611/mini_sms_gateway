@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "apps.smsmessages",
     "rest_framework",
     "rest_framework_simplejwt",
+    'django_filters'
 ]
 
 MIDDLEWARE = [

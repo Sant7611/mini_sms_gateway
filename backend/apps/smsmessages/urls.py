@@ -1,5 +1,5 @@
 from django.urls import path
-from backend.apps.smsmessages.views import sms_post, sms_logs
+from apps.smsmessages.views import sms_post, sms_logs
 
 
 urlpatterns = [

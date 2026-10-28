@@ -44,4 +44,4 @@ class ProviderAttempt(models.Model):
         ]
 
     def __str__(self):
-        return f"{self.msg} - {self.status} - {self.provider}"
+        return f"{self.message} - {self.status} - {self.provider}"

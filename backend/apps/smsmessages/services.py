@@ -1,4 +1,3 @@
-
 from django.db import transaction
 
 from apps.smsmessages.models import SMSMessage
@@ -39,12 +38,9 @@ def send_sms(*, user, recipients, content):
 
         messages.append(message)
 
-
     for message in messages:
 
-        successful = send_with_failover(
-            message=message
-        )
+        successful = send_with_failover(message=message)
 
         if successful:
             message.status = SMSMessage.Status.SENT
@@ -57,8 +53,6 @@ def send_sms(*, user, recipients, content):
 
             message.status = SMSMessage.Status.FAILED
 
-        message.save(
-            update_fields=["status", "updated_at"]
-        )
+        message.save(update_fields=["status", "updated_at"])
 
     return messages

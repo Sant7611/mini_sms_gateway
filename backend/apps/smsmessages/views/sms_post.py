@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from apps.smsmessages.models import SMSMessage
 from apps.smsmessages.services import send_sms
 from rest_framework.response import Response
+from django.core.exceptions import ValidationError
 from rest_framework import status
 
 
@@ -12,13 +13,21 @@ class SendSMSView(CreateAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = SendSMSSerializer
 
-    def create(self, validated_data):
+    def create(self, request, *args, **kwargs):
+
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
         user = self.request.user
+        data = serializer.validated_data
 
-        message = validated_data["message"]
-        recipients = validated_data["to"]
+        message = data["message"]
+        recipients = data["to"]
 
-        messages = send_sms(user=user, recipients=recipients, message=message)
+        try:
+            messages = send_sms(user=user, recipients=recipients, content=message)
+        except ValueError as error:
+            raise ValidationError({"detail": str(error)})
 
         total_cost = sum(msg.cost for msg in messages)
 
