@@ -66,7 +66,7 @@ def health_check(provider):
     since = timezone.now() - timedelta(hours=24)
 
     attempts = ProviderAttempt.objects.filter(
-        creted_at__gte=since, provider=provider, status__in=["success", "failed"]
+        attempted_at__gte=since, provider=provider, status__in=["success", "failed"]
     )
     stats = attempts.aggregate(
         total_attempts=Count("id"),

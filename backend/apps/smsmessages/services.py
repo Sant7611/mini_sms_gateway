@@ -59,6 +59,6 @@ def send_sms(*, user, recipients, content):
 
                 message.status = SMSMessage.Status.FAILED
 
-        message.save(update_fields=["status", "updated_at"])
+            message.save(update_fields=["status", "updated_at"])
 
     return messages
