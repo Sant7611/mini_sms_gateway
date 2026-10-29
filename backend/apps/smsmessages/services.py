@@ -17,7 +17,7 @@ def send_sms(*, user, recipients, content):
     
     total_cost = cost_data['total_cost']
 
-    with transaction.atomic:
+    with transaction.atomic():
         wallet = Wallet.objects.select_for_update().get(user=user)
         
         if wallet.balance < total_cost:
@@ -51,7 +51,7 @@ def send_sms(*, user, recipients, content):
             message.status = SMSMessage.Status.SENT
 
         else:
-            with transaction.atomic:
+            with transaction.atomic():
                 refund_credit(
                     wallet_id=wallet.id,
                     message=message,
@@ -59,6 +59,6 @@ def send_sms(*, user, recipients, content):
 
                 message.status = SMSMessage.Status.FAILED
 
-            message.save(update_fields=["status", "updated_at"])
+        message.save(update_fields=["status", "updated_at"])
 
     return messages
