@@ -43,19 +43,19 @@ def send_sms(*, user, recipients, content):
 
             messages.append(message)
 
-    for message in messages:
+        for message in messages:
 
-        successful = send_with_failover(message=message)
+            successful = send_with_failover(message=message)
 
-        if successful:
-            message.status = SMSMessage.Status.SENT
+            
+            if successful:
+                message.status = SMSMessage.Status.SENT
 
-        else:
-            with transaction.atomic():
+            else:
                 refund_credit(
-                    wallet_id=wallet.id,
-                    message=message,
-                )
+                        wallet_id=wallet.id,
+                        message=message,
+                    )
 
                 message.status = SMSMessage.Status.FAILED
 
