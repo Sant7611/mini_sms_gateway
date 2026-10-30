@@ -273,6 +273,7 @@ http://127.0.0.1:8000/
 | POST | `/api/v1/auth/register/` | Register an account and create its wallet |
 | POST | `/api/v1/auth/login/` | Obtain JWT access and refresh tokens |
 | POST | `/api/v1/sms/send/` | Validate recipients, charge credits, and attempt delivery |
+| GET | `/api/v1/wallet/transactions/` | Extra route added just for viewing the transactions. |
 | GET | `/api/v1/sms/logs/` | View your paginated SMS history |
 | GET | `/routes/health/` | View provider balances and health |
 
