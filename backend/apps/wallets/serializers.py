@@ -10,7 +10,7 @@ class WalletTransactionSerializer(ModelSerializer):
             "wallet",
             "amount",
             "transaction_type",
-            "description",
+            "message",
             "created_at",
         )
         read_only_fields = fields

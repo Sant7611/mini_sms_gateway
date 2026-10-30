@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView
 from apps.wallets.serializers import WalletTransactionSerializer
-from backend.apps.wallets.models import WalletTransaction
+from apps.wallets.models import WalletTransaction
 from rest_framework.permissions import IsAuthenticated
 
 class WalletTransactionListView(ListAPIView):
