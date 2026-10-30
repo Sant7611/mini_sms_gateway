@@ -26,7 +26,7 @@ load_dotenv(BASE_DIR.parent / ".env")
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", True)
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
@@ -92,7 +92,7 @@ if DB_ENGINE == "django.db.backends.postgresql":
             "USER": os.getenv('DB_USER',"postgres"),
             "PASSWORD": os.getenv('DB_PWD'),
             "HOST": os.getenv('DB_HOST', "localhost"),
-            "PORT": "5432",
+            "PORT": os.getenv('DB_PORT', "5432"),
         }
     }
     
@@ -157,6 +157,9 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
     ],
 }
 
