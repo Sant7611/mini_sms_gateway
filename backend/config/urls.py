@@ -19,8 +19,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/auth/', include('apps.accounts.urls')),
-    path('api/v1/sms/', include('apps.smsmessages.urls')),
-    path('api/v1/wallets/', include('apps.wallets.urls')),
+    path('auth/', include('apps.accounts.urls')),
+    path('sms/', include('apps.smsmessages.urls')),
+    path('wallets/', include('apps.wallets.urls')),
     path('routes/', include('apps.providers.urls'))
 ]
