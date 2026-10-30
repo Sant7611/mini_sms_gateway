@@ -1,0 +1,36 @@
+
+[
+  {
+    "model": "providers.smsprovider",
+    "pk": 1,
+    "fields": {
+      "name": "ROUTE_A",
+      "priority": 1,
+      "balance": 1000,
+      "failure_rate": 0.30,
+      "error_message": null
+    }
+  },
+  {
+    "model": "providers.smsprovider",
+    "pk": 2,
+    "fields": {
+      "name": "ROUTE_B",
+      "priority": 2,
+      "balance": 500,
+      "failure_rate": 0.10,
+      "error_message": null
+    }
+  },
+  {
+    "model": "providers.smsprovider",
+    "pk": 3,
+    "fields": {
+      "name": "ROUTE_C",
+      "priority": 3,
+      "balance": 300,
+      "failure_rate": 0.05,
+      "error_message": null
+    }
+  }
+]
